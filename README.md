@@ -167,7 +167,7 @@ Finally, to send a command using the BlueZ library we need the following functio
 int hci_send_cmd(int sock, uint16_t ogf, uint16_t ocf, uint8_t plen, void *param);
 ```
 
-This is quite powerful stuff, but rarely practical. Luckily, we are not constraint by hardware here such that using an abstraction such as Node.js is possible. In the following we go into a few details when using JavaScript with the Node.js library *Noble*.
+This is quite powerful stuff, but rarely practical. Luckily, we are not constrained by hardware here such that using an abstraction such as Node.js is possible. In the following we go into a few details when using JavaScript with the Node.js library *Noble*.
 
 ### Bluetooth with Node.js
 
