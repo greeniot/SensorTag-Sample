@@ -49,6 +49,27 @@ This way we discovered and paired our device. Now we can use the `gatttool` to p
 5. Issuing the command `char-read-hnd 0x25` again should now yield a non-zero value.
 6. Exit the program by typing `exit`.
 
+If something does not work until now we potentially need to turn on Bluetooth Low Energy:
+
+```bash
+rfkill unblock bluetooth
+hciconfig hci0 up
+```
+
+In some rare cases (e.g., on the Intel Edison) this alone may not do the job. A temporary fix could be to use the following command
+
+```bash
+killall bluetoothd
+```
+
+between using the `rfkill` and `hciconfig` executables. If the temporary fix is working correctly we can turn it into a permanent fix by replacing the command above with the following command:
+
+```bash
+systemctl disable bluetooth
+```
+
+Now the Bluetooth communication should be stable and reliable.
+
 To learn what exactly we did we need to get to know the so-called *handles* available on the SensorTag.
 
 ### Handles
@@ -327,3 +348,4 @@ In this tutorial we looked at the `noble-device` abstraction layer, which is yet
 * [Noble](https://github.com/sandeepmistry/noble)
 * [Noble-Device](https://github.com/sandeepmistry/noble-device)
 * [Node-SensorTag](https://github.com/sandeepmistry/node-sensortag)
+* [Configuration of the Intel Edison for BTLE](http://rexstjohn.com/configure-intel-edison-for-bluetooth-le-smart-development/)
